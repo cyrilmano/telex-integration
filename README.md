@@ -1,4 +1,4 @@
-# HNG12 Stage Backend Project
+# HNG12 Backend Project
 
 This is the backend API project for the HNG12 Stage 0 task. The API provides basic information in JSON format, including the registered email, current date/time in ISO 8601 format, and GitHub repository URL. It is built using **Laravel 11.x** and can be cloned and deployed to a publicly accessible endpoint.
 
