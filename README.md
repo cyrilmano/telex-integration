@@ -46,3 +46,5 @@ First, clone the repository to your local machine:
 ```bash
 git clone https://github.com/cyrilmano/hng12-backend
 cd hng12-backend
+
+Author: ThankGod Cyril Uche
