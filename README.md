@@ -130,5 +130,5 @@ If you would like to contribute to this project, feel free to fork the repositor
 ---
 
 ## **License**
-This project is open-source and available under the MIT License.
-```
+This project is open-source and available under the MIT License. 
+Feel free to drop me an email: thankgoduchecyril@gmail.com
