@@ -135,9 +135,9 @@ This project is open-source and available under the MIT License.
 Feel free to drop me an email if you need to discuss further: thankgoduchecyril@gmail.com
 
 ## **Other Links**
-https://hng.tech/hire/python-developers
-https://hng.tech/hire/csharp-developers
-https://hng.tech/hire/golang-developers
-https://hng.tech/hire/php-developers
-https://hng.tech/hire/java-developers
-https://hng.tech/hire/nodejs-developers
+1. https://hng.tech/hire/python-developers
+2. https://hng.tech/hire/csharp-developers 
+3. https://hng.tech/hire/golang-developers
+4. https://hng.tech/hire/php-developers
+5. https://hng.tech/hire/java-developers
+6. https://hng.tech/hire/nodejs-developers
