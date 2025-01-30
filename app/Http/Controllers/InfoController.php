@@ -16,9 +16,9 @@ class InfoController extends Controller
     public function getInfo()
     {
         return response()->json([
-            'email' => 'your-email@example.com',
+            'email' => 'thankgoduchecyril@gmail.com',
             'current_datetime' => Carbon::now()->toIso8601String(),
-            'github_url' => 'https://github.com/yourusername/hng12-stage0-api',
+            'github_url' => 'https://github.com/cyrilmano/hng12-backend',
         ], 200);
     }
 }
