@@ -20,6 +20,7 @@ This is the backend API project for the HNG12 Backend track, starting from Stage
 5. [Running the Application](#running-the-application)  
 6. [Contributing](#contributing)  
 7. [License](#license)  
+7. [Other Links](#other-links)  
 
 ---
 
@@ -131,4 +132,12 @@ If you would like to contribute to this project, feel free to fork the repositor
 
 ## **License**
 This project is open-source and available under the MIT License. 
-Feel free to drop me an email: thankgoduchecyril@gmail.com
+Feel free to drop me an email if you need to discuss further: thankgoduchecyril@gmail.com
+
+## **Other Links**
+https://hng.tech/hire/python-developers
+https://hng.tech/hire/csharp-developers
+https://hng.tech/hire/golang-developers
+https://hng.tech/hire/php-developers
+https://hng.tech/hire/java-developers
+https://hng.tech/hire/nodejs-developers
