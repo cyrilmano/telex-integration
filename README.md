@@ -47,10 +47,11 @@ The endpoint is publicly accessible and designed to provide basic information in
 ## **Installation Guide**
 
 ### **1. Install Dependencies**
-Once inside the project directory, run the following Composer command to install all required dependencies:
+Once you have cloned this project, and inside the project directory, run the following Composer command to install all required dependencies:
 
 ```bash
 composer install
+```
 
 This will create the vendor folder and install all Laravel dependencies.
 
