@@ -47,7 +47,13 @@ The endpoint is publicly accessible and designed to provide basic information in
 
 ## **Installation Guide**
 
-### **1. Install Dependencies**
+### **1. Clone the Repository and Install Dependencies**
+To get started, clone this repository to your local machine using Git:
+
+```bash
+git clone https://github.com/cyrilmano/hng12-backend.git
+```
+
 Once you have cloned this project, and inside the project directory, run the following Composer command to install all required dependencies:
 
 ```bash
@@ -102,6 +108,41 @@ This will set the APP_KEY in your .env file.
 - `500 Internal Server Error`: If there is an issue with the server or the API fails to process the request.
 
 ---
+
+### **Endpoint: GET /api/classify-number** 
+
+#### **Request**
+- **URL**: `http://127.0.0.1:8000/api/classify-number?number=371`
+- **Method**: `GET`
+- **Query Parameter**:
+  - `number (integer) - The number to classify.`
+- **Headers**:
+  - `Content-Type: application/json`
+
+### **Response (200 OK)**
+```json
+{
+    "number": 371,
+    "is_prime": false,
+    "is_perfect": false,
+    "properties": ["armstrong", "odd"],
+    "digit_sum": 11,
+    "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
+}
+```
+
+### **Response (400 Bad Request)**
+```json
+{
+    "number": "alphabet",
+    "error": true
+}
+```
+
+### **Response Codes**
+- `200 OK`: When the request is successful.
+- `400 Bad Request`: If an invalid number is provided.
+- `500 Internal Server Error`: If there is an issue with the server or the API fails to process the request.
 
 ## **Running the Application**
 To run the Laravel application locally, use:
