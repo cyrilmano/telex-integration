@@ -16,6 +16,7 @@ This is the backend API project for the HNG12 Backend track, starting from Stage
    - [Generate Application Key](#generate-application-key)  
 4. [API Documentation](#api-documentation)  
    - [Endpoint: `GET /api/info`](#endpoint-get-apiinfo)  
+   - [Endpoint: `GET /api/classify-number`](#endpoint-get-apiclassify-number)  
    - [Response Codes](#response-codes)  
 5. [Running the Application](#running-the-application)  
 6. [Contributing](#contributing)  
