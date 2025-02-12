@@ -1,6 +1,6 @@
 # HNG12 Backend Project
 
-This is the backend API project for the HNG12 Backend track, starting from Stage 0 task. The API provides basic information in JSON format, including the registered email, current date/time in ISO 8601 format, and GitHub repository URL. It is built using **Laravel 11.x** and can be cloned and deployed to a publicly accessible endpoint.
+The expectation is to create a Number Classification API. An API that takes a number and returns interesting mathematical properties about it, along with a fun fact. HNG Backend Task 1. The API also provides basic information in JSON format, including the registered email, current date/time in ISO 8601 format, and GitHub repository URL. It is built using **Laravel 11.x** and can be cloned and deployed to a publicly accessible endpoint.
 
 **Author:** ThankGod Cyril Uche  
 **GitHub Repository:** [hng12-backend](https://github.com/cyrilmano/hng12-backend)
