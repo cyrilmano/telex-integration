@@ -51,6 +51,9 @@ class KeywordMonitorController extends Controller
 
     public function sendSummary(Request $request)
     {
+        Log::info('Sending summary:');
+        Log::info('Incoming request:', $request->all());
+
         $validator = Validator::make($request->all(), [
             'channel_id' => 'required|string',
             'return_url' => 'required|url',
