@@ -41,6 +41,35 @@ class KeywordMonitorController extends Controller
         return response()->json(["message" => "Processed"], 200);
     }
 
+    public function getDataFromTelex(Request $request)
+    {
+        Log::error($request->all());
+        /* $validator = validator($request->all(), [
+            'message' => 'required|string',
+            'sender' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        } */
+        
+        $keywords = ["urgent", "meeting", "bug", "deadline"];
+        $message = strtolower($request->input('message'));
+
+        /* foreach ($keywords as $keyword) {
+            if (str_contains($message, strtolower($keyword))) {
+                KeywordMessage::create([
+                    'keyword' => $keyword,
+                    'message' => $request->input('message'),
+                    'sender' => $request->input('sender'),
+                    'received_at' => now(),
+                ]);
+            }
+        } */
+
+        return response()->json(["message" => "Data Recieved from Telex"], 200);
+    }
+
     public function sendSummary()
     {
         $summary = KeywordMessage::whereDate('received_at', today())
