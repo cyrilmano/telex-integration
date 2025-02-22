@@ -14,31 +14,38 @@ class KeywordMonitorController extends Controller
 {
     public function getDataFromTelex(Request $request)
     {
-        Log::error($request->all());
-        /* $validator = validator($request->all(), [
+        Log::info('Incoming request:', $request->all());
+
+        $validator = Validator::make($request->all(), [
+            'channel_id' => 'required|string',
             'message' => 'required|string',
-            'sender' => 'required|string',
+            'settings' => 'required|array',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
-        } */
-        
-        $keywords = ["urgent", "meeting", "bug", "deadline"];
-        $message = strtolower($request->input('message'));
+        }
 
-        /* foreach ($keywords as $keyword) {
-            if (str_contains($message, strtolower($keyword))) {
+        $expectedChannelId = env('TELEX_CHAT_CHANNEL_ID');
+        if ($request->input('channel_id') !== $expectedChannelId) {
+            return response()->json(['error' => 'Invalid channel ID'], 403);
+        }
+
+        $message = strip_tags(strtolower($request->input('message')));
+
+        $keywords = explode(',', env('TELEX_KEYWORDS', ''));
+
+        foreach ($keywords as $keyword) {
+            if (str_contains($message, $keyword)) {
                 KeywordMessage::create([
                     'keyword' => $keyword,
-                    'message' => $request->input('message'),
-                    'sender' => $request->input('sender'),
+                    'message' => $message,
                     'received_at' => now(),
                 ]);
             }
-        } */
+        }
 
-        return response()->json(["message" => "Data Recieved from Telex"], 200);
+        return response()->json(["message" => "Data received and processed"], 200);
     }
 
     public function sendSummary(Request $request)
@@ -58,11 +65,11 @@ class KeywordMonitorController extends Controller
         $returnUrl = $request->input('return_url');
         $settings = $request->input('settings');
 
-        $expectedChannelId = env('TELEX_CHANNEL_ID');
+        $expectedChannelId = env('TELEX_SUMMARY_CHANNEL_ID');
         $expectedInterval = env('TELEX_DEFAULT_INTERVAL');
 
         if ($channelId !== $expectedChannelId) {
-            return response()->json(['error' => 'Invalid channel ID'], 403);
+            return response()->json(['error' => 'Invalid Summary Channel ID'], 403);
         }
 
         $defaultInterval = $settings[0]['default'] ?? null;
@@ -84,7 +91,7 @@ class KeywordMonitorController extends Controller
             $summaryMessage .= "\n";
         }
 
-        $webhookUrl = env('TELEX_WEBHOOK_URL');
+        $webhookUrl = env('TELEX_SUMMARY_WEBHOOK_URL');
         $this->sendToTelex($webhookUrl, $summaryMessage);
 
         return response()->json(["message" => "Summary sent"], 200);
