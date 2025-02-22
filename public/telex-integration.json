@@ -5,10 +5,10 @@
       "updated_at": "2025-02-22"
     },
     "descriptions": {
-      "app_name": "Learnbread Integration",
-      "app_description": "A Telex integration that can be used on the Telex platform (telex.im).",
-      "app_logo": "https://th.bing.com/th/id/OIP.yzohNQhrApbHgqTjfa9QUwHaHa?rs=1&pid=ImgDetMain",
-      "app_url": "https://hng.africaliteracy.com",
+      "app_name": "Learnbread Telex Channel Monitoring",
+      "app_description": "A Telex integration that monitors sensitive keywords from the learnbread channel, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im).",
+      "app_logo": "https://learnbread.com/learnbread-primary-logo-removebg.png",
+      "app_url": "https://Learnbread.com",
       "background_color": "#fff"
     },
     "is_active": true,
@@ -25,7 +25,7 @@
         "label": "interval",
         "type": "text",
         "required": true,
-        "default": "* * * * *"
+        "default": "0 * * * *"
       }
     ],
     "tick_url": "https://hng.africaliteracy.com/api/telex/get-summary",
