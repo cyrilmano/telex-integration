@@ -14,14 +14,14 @@ class KeywordMonitorController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = validator($request->all(), [
+        /* $validator = validator($request->all(), [
             'message' => 'required|string',
             'sender' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
-        }
+        } */
         
         $keywords = ["urgent", "meeting", "bug", "deadline"];
         $message = strtolower($request->input('message'));
