@@ -28,6 +28,7 @@
         "default": "* * * * *"
       }
     ],
-    "tick_url": "https://f3b4-154-118-102-39.ngrok-free.app/api/telex/keyword-monitor"
+    "tick_url": "https://f3b4-154-118-102-39.ngrok-free.app/api/telex/keyword-monitor",
+    "target_url": "https://f3b4-154-118-102-39.ngrok-free.app/api/telex/keyword-monitor"
   }
 }
