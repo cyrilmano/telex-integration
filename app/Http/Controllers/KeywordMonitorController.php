@@ -40,7 +40,7 @@ class KeywordMonitorController extends Controller
                 KeywordMessage::create([
                     'keyword' => $keyword,
                     'message' => $message,
-                    'sender' => $request->input('sender') ? $request->input('sender') : 'Anonymous',
+                    'sender' => 'Anonymous',
                     'received_at' => now(),
                 ]);
             }

@@ -6,7 +6,7 @@
     },
     "descriptions": {
       "app_name": "Learnbread Telex Channel Monitoring",
-      "app_description": "A Telex integration that monitors sensitive keywords from the learnbread channel, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im).",
+      "app_description": "A Telex integration that monitors sensitive keywords from the learnbread channel, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im). every 1 hour",
       "app_logo": "https://learnbread.com/learnbread-primary-logo-removebg.png",
       "app_url": "https://Learnbread.com",
       "background_color": "#fff"
