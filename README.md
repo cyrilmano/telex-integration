@@ -1,6 +1,6 @@
 # A Telex integration
 
-A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords.
+A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords..
 
 **Author:** ThankGod Cyril Uche  
 **GitHub Repository:** [hng12-backend](https://github.com/cyrilmano/hng12-backend)
