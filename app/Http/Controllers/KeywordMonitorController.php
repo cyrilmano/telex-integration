@@ -14,7 +14,7 @@ class KeywordMonitorController extends Controller
 {
     public function store(Request $request)
     {
-        Log::error("Telex webhook exception: " . $request->all());
+        Log::error($request->all());
         /* $validator = validator($request->all(), [
             'message' => 'required|string',
             'sender' => 'required|string',
