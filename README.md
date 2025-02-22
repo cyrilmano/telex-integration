@@ -1,9 +1,9 @@
 # A Telex integration
 
-A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords..
+A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords.
 
 **Author:** ThankGod Cyril Uche  
-**GitHub Repository:** [hng12-backend](https://github.com/cyrilmano/hng12-backend)
+**GitHub Repository:** [telex-integration](https://github.com/cyrilmano/telex-integration)
 
 ---
 
@@ -14,14 +14,18 @@ A Telex integration that can be used on the Telex platform (telex.im). This Inte
    - [Install Dependencies](#install-dependencies)  
    - [Set Up Environment File](#set-up-the-environment-file)  
    - [Generate Application Key](#generate-application-key)  
+   - [Run Migrations](#run-migrations)  
 4. [API Documentation](#api-documentation)  
    - [Endpoint: `GET /api/info`](#endpoint-get-apiinfo)  
    - [Endpoint: `GET /api/classify-number`](#endpoint-get-apiclassify-number)  
+   - [Endpoint: `GET /api/json-data`](#endpoint-get-apijson-data)  
+   - [Endpoint: `POST /api/telex/get-summary`](#endpoint-post-apitelexget-summary)  
+   - [Endpoint: `POST /api/telex/get-message-from-channel`](#endpoint-post-apitelexget-message-from-channel)  
    - [Response Codes](#response-codes)  
 5. [Running the Application](#running-the-application)  
 6. [Contributing](#contributing)  
 7. [License](#license)  
-7. [Other Links](#other-links)  
+8. [Other Links](#other-links)  
 
 ---
 
@@ -82,6 +86,15 @@ Generate the Laravel application key using the Artisan command:
 php artisan key:generate
 ```
 This will set the APP_KEY in your .env file.
+
+### **4. Run Migrations**
+Run the migrations to create the database tables:
+
+```bash
+php artisan migrate
+```
+
+Make sure to configure your .env file with the appropriate settings for your environment.
 
 ---
 
@@ -145,6 +158,69 @@ This will set the APP_KEY in your .env file.
 - `400 Bad Request`: If an invalid number is provided.
 - `500 Internal Server Error`: If there is an issue with the server or the API fails to process the request.
 
+### **Endpoint: GET /api/json-data**
+
+#### **Request**
+- **URL**: `http://127.0.0.1:8000/api/json-data`
+- **Method**: `GET`
+- **Headers**:
+  - `Content-Type: application/json`
+
+### **Response (200 OK)**
+```json
+{
+  "data": {
+    "key1": "value1",
+    "key2": "value2"
+  }
+}
+```
+
+### **Endpoint: POST /api/telex/get-summary**
+
+#### **Request**
+- **URL**: `http://127.0.0.1:8000/api/telex/get-summary`
+- **Method**: `POST`
+- **Headers**:
+  - `Content-Type: application/json`
+- **Body**:
+```json
+{
+  "keywords": ["keyword1", "keyword2"]
+}
+```
+
+### **Response (200 OK)**
+```json
+{
+  "summary": "Daily summary of messages containing the specified keywords."
+}
+```
+
+### **Endpoint: POST /api/telex/get-message-from-channel**
+
+#### **Request**
+- **URL**: `http://127.0.0.1:8000/api/telex/get-message-from-channel`
+- **Method**: `POST`
+- **Headers**:
+  - `Content-Type: application/json`
+- **Body**:
+```json
+{
+  "channel_id": "12345"
+}
+```
+
+### **Response (200 OK)**
+```json
+{
+  "messages": [
+    "Message 1",
+    "Message 2"
+  ]
+}
+```
+
 ## **Running the Application**
 To run the Laravel application locally, use:
 
@@ -181,3 +257,17 @@ Feel free to drop me an email if you need to discuss further: thankgoduchecyril@
 2. https://hng.tech/hire/csharp-developers 
 3. https://hng.tech/hire/golang-developers
 4. https://hng.tech/hire/php-developers
+
+## Setup Instructions
+
+1. Copy the `.env.example` file and rename it to `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+
+2. Run the migrations to create the database tables:
+    ```bash
+    php artisan migrate
+    ```
+
+Make sure to configure your [.env](http://_vscodecontentref_/2) file with the appropriate settings for your environment.
