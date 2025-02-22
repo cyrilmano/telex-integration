@@ -22,7 +22,7 @@
     "author": "ThankGod Cyril Uche on LinkedIn",
     "settings": [
       {
-        "label": "Time interval",
+        "label": "interval",
         "type": "text",
         "required": true,
         "default": "* * * * *"
