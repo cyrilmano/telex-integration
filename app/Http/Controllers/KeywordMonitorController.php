@@ -95,7 +95,7 @@ class KeywordMonitorController extends Controller
             $summaryMessage .= "\n";
         }
 
-        $webhookUrl = env('TELEX_SUMMARY_WEBHOOK_URL');
+        $webhookUrl = env('TELEX_SUMMARY_CHANNEL_WEBHOOK_URL');
         $this->sendToTelex($webhookUrl, $summaryMessage);
 
         return response()->json(["message" => "Summary sent"], 200);
