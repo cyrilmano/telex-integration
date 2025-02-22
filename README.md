@@ -56,7 +56,7 @@ The endpoint is publicly accessible and designed to provide basic information in
 To get started, clone this repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/cyrilmano/hng12-backend.git
+git clone https://github.com/cyrilmano/telex-integration.git
 ```
 
 Once you have cloned this project, and inside the project directory, run the following Composer command to install all required dependencies:
