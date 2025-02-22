@@ -13,4 +13,4 @@ Artisan::command('inspire', function () {
 Schedule::call(function () {
     Log::info('Scheduler is working!');
     (new KeywordMonitorController)->sendSummary();
-})->everyTwoHours();
+})->everyMinutes();
