@@ -29,6 +29,6 @@
       }
     ],
     "tick_url": "https://hng.africaliteracy.com/api/telex/keyword-monitor",
-    "target_url": ""
+    "target_url": "https://hng.africaliteracy.com/api/telex/keyword-monitor/get-channel-message"
   }
 }

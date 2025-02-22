@@ -12,35 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class KeywordMonitorController extends Controller
 {
-    public function store(Request $request)
-    {
-        Log::error($request->all());
-        /* $validator = validator($request->all(), [
-            'message' => 'required|string',
-            'sender' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        } */
-        
-        $keywords = ["urgent", "meeting", "bug", "deadline"];
-        $message = strtolower($request->input('message'));
-
-        foreach ($keywords as $keyword) {
-            if (str_contains($message, strtolower($keyword))) {
-                KeywordMessage::create([
-                    'keyword' => $keyword,
-                    'message' => $request->input('message'),
-                    'sender' => $request->input('sender'),
-                    'received_at' => now(),
-                ]);
-            }
-        }
-
-        return response()->json(["message" => "Processed"], 200);
-    }
-
     public function getDataFromTelex(Request $request)
     {
         Log::error($request->all());
@@ -70,8 +41,35 @@ class KeywordMonitorController extends Controller
         return response()->json(["message" => "Data Recieved from Telex"], 200);
     }
 
-    public function sendSummary()
+    public function sendSummary(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'channel_id' => 'required|string',
+            'return_url' => 'required|url',
+            'settings' => 'required|array',
+            'settings.*.default' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $channelId = $request->input('channel_id');
+        $returnUrl = $request->input('return_url');
+        $settings = $request->input('settings');
+
+        $expectedChannelId = env('TELEX_CHANNEL_ID');
+        $expectedInterval = env('TELEX_DEFAULT_INTERVAL');
+
+        if ($channelId !== $expectedChannelId) {
+            return response()->json(['error' => 'Invalid channel ID'], 403);
+        }
+
+        $defaultInterval = $settings[0]['default'] ?? null;
+        if ($defaultInterval !== $expectedInterval) {
+            return response()->json(['error' => 'Invalid interval setting'], 403);
+        }
+
         $summary = KeywordMessage::whereDate('received_at', today())
             ->orderBy('received_at')
             ->get()

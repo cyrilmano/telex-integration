@@ -12,9 +12,9 @@ Route::get('/api/classify-number', [NumberController::class, 'classifyNumber']);
 
 Route::get('/api/json-data', [KeywordMonitorController::class, 'getJsonData']);
 
-Route::post('/api/telex/keyword-monitor', [KeywordMonitorController::class, 'store'])
+Route::post('/api/telex/get-summary', [KeywordMonitorController::class, 'sendSummary'])
     ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
-Route::post('/api/telex/get-channel-message', [KeywordMonitorController::class, 'getDataFromTelex'])
+Route::post('/api/telex/get-message-from-channel', [KeywordMonitorController::class, 'getDataFromTelex'])
     ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
-Route::get('/api/telex/daily-monitor/summary', [KeywordMonitorController::class, 'sendSummary']);
+//Route::get('/api/telex/daily-monitor/summary', [KeywordMonitorController::class, 'sendSummary']);
