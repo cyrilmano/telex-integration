@@ -110,10 +110,38 @@ Make sure to configure your .env file with the appropriate settings for your env
 ### **Response (200 OK)**
 ```json
 {
-  "data": {
-    "key1": "value1",
-    "key2": "value2"
-  }
+    "data": {
+        "date": {
+            "created_at": "2025-02-21",
+            "updated_at": "2025-02-22"
+        },
+        "descriptions": {
+            "app_name": "Learnbread Telex Channel Monitoring",
+            "app_description": "A Telex integration that monitors sensitive keywords from the learnbread channel, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im) every 1 hour.",
+            "app_logo": "https://learnbread.com/learnbread-primary-logo-removebg.png",
+            "app_url": "https://Learnbread.com",
+            "background_color": "#fff"
+        },
+        "is_active": true,
+        "integration_type": "interval",
+        "integration_category": "Monitoring & Logging",
+        "key_features": [
+            "Interval history",
+            "Diet",
+            ""
+        ],
+        "author": "ThankGod Cyril Uche on LinkedIn",
+        "settings": [
+            {
+                "label": "interval",
+                "type": "text",
+                "required": true,
+                "default": "* * * * *"
+            }
+        ],
+        "tick_url": "app_base_url/api/telex/get-summary",
+        "target_url": "app_base_url/api/telex/get-message-from-channel"
+    }
 }
 ```
 
@@ -127,14 +155,23 @@ Make sure to configure your .env file with the appropriate settings for your env
 - **Body**:
 ```json
 {
-  "keywords": ["keyword1", "keyword2"]
+  "channel_id": "telex_will_send_the_channel_id",
+  "return_url": "telex_will_also_send_the_retun_url",
+  "settings": [
+    {
+      "default": "* * * * *",
+      "label": "interval",
+      "required": true,
+      "type": "text"
+    }
+  ]
 }
 ```
 
 ### **Response (200 OK)**
 ```json
 {
-  "summary": "Daily summary of messages containing the specified keywords."
+  "message": "Daily summary of messages containing the specified keywords. and other keys telex is expecting"
 }
 ```
 
@@ -148,17 +185,23 @@ Make sure to configure your .env file with the appropriate settings for your env
 - **Body**:
 ```json
 {
-  "channel_id": "12345"
+  "channel_id": "telex_will_send_the_channel_id",
+  "message": "Telex will also send the message here",
+  "settings": [
+    {
+      "default": "* * * * *",
+      "label": "interval",
+      "required": true,
+      "type": "text"
+    }
+  ]
 }
 ```
 
 ### **Response (200 OK)**
 ```json
 {
-  "messages": [
-    "Message 1",
-    "Message 2"
-  ]
+    "message": "Data received and processed"
 }
 ```
 
