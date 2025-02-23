@@ -526,12 +526,7 @@ Feel free to drop me an email if you need to discuss further: thankgoduchecyril@
 ## **Screenshots**
 
 ### **Learnbread Community Channel**
-![Learnbread Community Channel](path/to/learnbread-community-channel-screenshot.png)
 ![alt text](image-1.png)
 
 ### **Learnbread Admin Monitoring Channel**
-![Learnbread Admin Monitoring Channel](path/to/learnbread-admin-monitoring-channel-screenshot.png)
-```
 ![alt text](image.png)
-
-Make sure to configure your [.env](http://_vscodecontentref_/2) file with the appropriate settings for your environment.
