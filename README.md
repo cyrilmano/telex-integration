@@ -1,6 +1,6 @@
 # A Telex integration
 
-A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords.
+A Telex integration that monitors sensitive keywords from the learnbread-community-channel in Telex, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im) every 1 hour, for now the interval is every 1 minutes (because of the number of multiple chat dropping in the learnbread-community-channel).
 
 **Author:** ThankGod Cyril Uche  
 **GitHub Repository:** [telex-integration](https://github.com/cyrilmano/telex-integration)
