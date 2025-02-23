@@ -31,7 +31,7 @@ A Telex integration that monitors sensitive keywords from the learnbread-communi
 ---
 
 ## **Project Overview**
-This API exposes a simple endpoint that returns the following information:
+This project is for HNG Backend Track
 
 - **Email**: The email address used to register for the HNG12 Slack workspace.
 - **Current Datetime**: The current UTC date and time in ISO 8601 format.
