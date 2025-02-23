@@ -3,7 +3,7 @@
 A Telex integration that monitors sensitive keywords from the learnbread-community-channel in Telex, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im) every 1 hour, for now the interval is every 1 minutes (because of the number of multiple chat dropping in the learnbread-community-channel).
 
 **Author:** ThankGod Cyril Uche  
-**GitHub Repository:** [telex-integration](https://github.com/cyrilmano/telex-integration)
+**GitHub Repository:** [telex-integration](https://github.com/telexintegrations/learnbread-telex-channel-monitoring)
 
 ---
 
@@ -57,7 +57,7 @@ The endpoint is publicly accessible and designed to provide basic information in
 To get started, clone this repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/cyrilmano/telex-integration.git
+git clone https://github.com/telexintegrations/learnbread-telex-channel-monitoring
 ```
 
 Once you have cloned this project, and inside the project directory, run the following Composer command to install all required dependencies:
