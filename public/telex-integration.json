@@ -25,7 +25,7 @@
         "label": "interval",
         "type": "text",
         "required": true,
-        "default": "0 * * * *"
+        "default": "* * * * *"
       }
     ],
     "tick_url": "https://hng.africaliteracy.com/api/telex/get-summary",
