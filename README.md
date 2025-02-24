@@ -1,9 +1,9 @@
 # A Telex integration
 
-A Telex integration that can be used on the Telex platform (telex.im). This Interval Integration will; 1. Monitor specific keywords in the Telex Channel. 2. Send a daily summary of messages containing those keywords.
+A Telex integration that monitors sensitive keywords from the learnbread-community-channel in Telex, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im) every 1 hour, for now the interval is every 1 minutes (because of the number of multiple chat dropping in the learnbread-community-channel).
 
 **Author:** ThankGod Cyril Uche  
-**GitHub Repository:** [telex-integration](https://github.com/cyrilmano/telex-integration)
+**GitHub Repository:** [telex-integration](https://github.com/telexintegrations/learnbread-telex-channel-monitoring)
 
 ---
 
@@ -16,8 +16,6 @@ A Telex integration that can be used on the Telex platform (telex.im). This Inte
    - [Generate Application Key](#generate-application-key)  
    - [Run Migrations](#run-migrations)  
 4. [API Documentation](#api-documentation)  
-   - [Endpoint: `GET /api/info`](#endpoint-get-apiinfo)  
-   - [Endpoint: `GET /api/classify-number`](#endpoint-get-apiclassify-number)  
    - [Endpoint: `GET /api/json-data`](#endpoint-get-apijson-data)  
    - [Endpoint: `POST /api/telex/get-summary`](#endpoint-post-apitelexget-summary)  
    - [Endpoint: `POST /api/telex/get-message-from-channel`](#endpoint-post-apitelexget-message-from-channel)  
@@ -26,11 +24,12 @@ A Telex integration that can be used on the Telex platform (telex.im). This Inte
 6. [Contributing](#contributing)  
 7. [License](#license)  
 8. [Other Links](#other-links)  
+9. [Screenshots](#screenshots)  
 
 ---
 
 ## **Project Overview**
-This API exposes a simple endpoint that returns the following information:
+This project is for HNG Backend Track
 
 - **Email**: The email address used to register for the HNG12 Slack workspace.
 - **Current Datetime**: The current UTC date and time in ISO 8601 format.
@@ -56,7 +55,7 @@ The endpoint is publicly accessible and designed to provide basic information in
 To get started, clone this repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/cyrilmano/telex-integration.git
+git clone https://github.com/telexintegrations/learnbread-telex-channel-monitoring.git
 ```
 
 Once you have cloned this project, and inside the project directory, run the following Composer command to install all required dependencies:
@@ -100,64 +99,6 @@ Make sure to configure your .env file with the appropriate settings for your env
 
 ## **API Documentation**
 
-### **Endpoint: GET /api/info**
-
-#### **Request**
-- **URL**: `http://127.0.0.1:8000/api/info`
-- **Method**: `GET`
-- **Headers**:
-  - `Content-Type: application/json`
-
-#### **Response (200 OK)**
-```json
-{
-  "email": "your-email@example.com",
-  "current_datetime": "2025-01-30T09:30:00Z",
-  "github_url": "https://github.com/cyrilmano/hng12-backend"
-}
-```
-
-### **Response Codes**
-- `200 OK`: When the request is successful.
-- `500 Internal Server Error`: If there is an issue with the server or the API fails to process the request.
-
----
-
-### **Endpoint: GET /api/classify-number** 
-
-#### **Request**
-- **URL**: `http://127.0.0.1:8000/api/classify-number?number=371`
-- **Method**: `GET`
-- **Query Parameter**:
-  - `number (integer) - The number to classify.`
-- **Headers**:
-  - `Content-Type: application/json`
-
-### **Response (200 OK)**
-```json
-{
-    "number": 371,
-    "is_prime": false,
-    "is_perfect": false,
-    "properties": ["armstrong", "odd"],
-    "digit_sum": 11,
-    "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
-}
-```
-
-### **Response (400 Bad Request)**
-```json
-{
-    "number": "alphabet",
-    "error": true
-}
-```
-
-### **Response Codes**
-- `200 OK`: When the request is successful.
-- `400 Bad Request`: If an invalid number is provided.
-- `500 Internal Server Error`: If there is an issue with the server or the API fails to process the request.
-
 ### **Endpoint: GET /api/json-data**
 
 #### **Request**
@@ -169,10 +110,38 @@ Make sure to configure your .env file with the appropriate settings for your env
 ### **Response (200 OK)**
 ```json
 {
-  "data": {
-    "key1": "value1",
-    "key2": "value2"
-  }
+    "data": {
+        "date": {
+            "created_at": "2025-02-21",
+            "updated_at": "2025-02-22"
+        },
+        "descriptions": {
+            "app_name": "Learnbread Telex Channel Monitoring",
+            "app_description": "A Telex integration that monitors sensitive keywords from the learnbread channel, and sends the summary to the learnbread-admin-channel on the Telex platform (telex.im) every 1 hour.",
+            "app_logo": "https://learnbread.com/learnbread-primary-logo-removebg.png",
+            "app_url": "https://Learnbread.com",
+            "background_color": "#fff"
+        },
+        "is_active": true,
+        "integration_type": "interval",
+        "integration_category": "Monitoring & Logging",
+        "key_features": [
+            "Interval history",
+            "Diet",
+            ""
+        ],
+        "author": "ThankGod Cyril Uche on LinkedIn",
+        "settings": [
+            {
+                "label": "interval",
+                "type": "text",
+                "required": true,
+                "default": "* * * * *"
+            }
+        ],
+        "tick_url": "app_base_url/api/telex/get-summary",
+        "target_url": "app_base_url/api/telex/get-message-from-channel"
+    }
 }
 ```
 
@@ -186,14 +155,23 @@ Make sure to configure your .env file with the appropriate settings for your env
 - **Body**:
 ```json
 {
-  "keywords": ["keyword1", "keyword2"]
+  "channel_id": "telex_will_send_the_channel_id",
+  "return_url": "telex_will_also_send_the_retun_url",
+  "settings": [
+    {
+      "default": "* * * * *",
+      "label": "interval",
+      "required": true,
+      "type": "text"
+    }
+  ]
 }
 ```
 
 ### **Response (200 OK)**
 ```json
 {
-  "summary": "Daily summary of messages containing the specified keywords."
+  "message": "Daily summary of messages containing the specified keywords. and other keys telex is expecting"
 }
 ```
 
@@ -207,17 +185,23 @@ Make sure to configure your .env file with the appropriate settings for your env
 - **Body**:
 ```json
 {
-  "channel_id": "12345"
+  "channel_id": "telex_will_send_the_channel_id",
+  "message": "Telex will also send the message here",
+  "settings": [
+    {
+      "default": "* * * * *",
+      "label": "interval",
+      "required": true,
+      "type": "text"
+    }
+  ]
 }
 ```
 
 ### **Response (200 OK)**
 ```json
 {
-  "messages": [
-    "Message 1",
-    "Message 2"
-  ]
+    "message": "Data received and processed"
 }
 ```
 
@@ -258,16 +242,10 @@ Feel free to drop me an email if you need to discuss further: thankgoduchecyril@
 3. https://hng.tech/hire/golang-developers
 4. https://hng.tech/hire/php-developers
 
-## Setup Instructions
+## **Screenshots**
 
-1. Copy the `.env.example` file and rename it to `.env`:
-    ```bash
-    cp .env.example .env
-    ```
+### **Learnbread Community Channel**
+![alt text](image-1.png)
 
-2. Run the migrations to create the database tables:
-    ```bash
-    php artisan migrate
-    ```
-
-Make sure to configure your [.env](http://_vscodecontentref_/2) file with the appropriate settings for your environment.
+### **Learnbread Admin Monitoring Channel**
+![alt text](image.png)
